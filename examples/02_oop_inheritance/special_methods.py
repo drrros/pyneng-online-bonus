@@ -1,5 +1,5 @@
 import netmiko
-
+import re
 
 DEVICE_PARAMS = {
         'device_type': 'cisco_ios',
