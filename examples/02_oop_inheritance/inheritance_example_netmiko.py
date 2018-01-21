@@ -59,13 +59,6 @@ class MyNetmiko(CiscoIosBase):
         print('Hello from', self.ip)
 
 
-class MyNetmiko(CiscoIosBase):
-    def send_command(self, command, *args, **kwargs):
-        command_output = super().send_command(command, *args, **kwargs)
-        if 'Invalid input' in command_output:
-            raise ErrorInCommand('Ошибка в команде', command)
-        return command_output
-
 r1 = MyNetmiko(**device_params)
 
 try:
