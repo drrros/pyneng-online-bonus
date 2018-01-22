@@ -13,8 +13,6 @@
 
 Переписать метод send_command netmiko, добавив в него проверку на ошибки.
 
-Проверить, что в классе MyNetmiko доступны методы send_command и send_config_set
-
 In [2]: from task_4_3a import MyNetmiko
 
 In [3]: r1 = MyNetmiko(**device_params)
