@@ -7,13 +7,16 @@ def log(func):
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
     def inner(*args, **kwargs):
-        logging.debug('Вызываем {}'.format(func.__name__))
+        logging.debug('Функция {}'.format(func.__name__))
         if args:
-            logging.debug('\tПозиционные аргументы: {}'.format(args))
+            logging.debug(
+                'Функция {}. Позиционные аргументы: {}'.format(func.__name__, args))
         if kwargs:
-            logging.debug('\tКлючевые аргументы: {}'.format(kwargs))
+            logging.debug(
+                'Функция {}. Ключевые аргументы: {}'.format(func.__name__, kwargs))
         result = func(*args, **kwargs)
-        logging.debug('\tРезультат функции: {}'.format(result))
+        logging.debug(
+            'Функция {}. Результат функции: {}'.format(func.__name__, result))
         return result
     return inner
 
@@ -27,6 +30,7 @@ def sub(a,b):
     return a-b
 
 
-mult(4,5)
-mult(a=100, b=300)
-sub(100,44)
+if __name__ == '__main__':
+    mult(4,5)
+    mult(a=100, b=300)
+    sub(100,44)

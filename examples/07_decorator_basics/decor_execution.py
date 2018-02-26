@@ -1,18 +1,18 @@
 
-def decorator5(func):
-    #print('Запускаем decorator5')
+def decorator(func):
+    #print('Запускаем decorator')
     def inner(*args, **kwargs):
         print('Вызываем', func.__name__)
         return func(*args, **kwargs)
     return inner
 
 
-@decorator5
+@decorator
 def multiply(a, b):
     return a*b
 
 
-@decorator5
+@decorator
 def mysumm(*args):
     return sum(args)
 
