@@ -3,6 +3,7 @@ import yaml
 from pprint import pprint
 from functools import singledispatch
 from collections.abc import Sequence
+#http://graphdesmonats.yolasite.com/resources/python3_container_inheritance.svg
 
 @singledispatch
 def send_commands(command, device):
