@@ -5,15 +5,15 @@ import netmiko
 from netmiko.ssh_exception import SSHException
 
 
-def netmiko_send_command(command, **device_params):
+def netmiko_send_command(command, parse_textfsm=False, **device_params):
     try:
         with netmiko.ConnectHandler(**device_params) as ssh:
             print('Connecting to device', ssh.ip)
             ssh.enable()
-            result = ssh.send_command(command)
+            result = ssh.send_command(command, use_textfsm=parse_textfsm)
             return result
     except SSHException as error:
-        return error
+        return str(error)
 
 
 def parse_textfsm(output, template_filename):
@@ -21,7 +21,8 @@ def parse_textfsm(output, template_filename):
     template = open(template_filename)
     fsm = textfsm.TextFSM(template)
     result = fsm.ParseText(output)
-    return [fsm.header] + result
+    return [dict(zip(fsm.header, row)) for row in result]
+
 
 
 def run_script_get_stdout(script_to_run_line):
