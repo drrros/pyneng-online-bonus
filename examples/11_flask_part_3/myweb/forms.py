@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, IPAddress
 
 
@@ -26,17 +26,6 @@ class RunScript(FlaskForm):
 
 
 class SaveToFile(FlaskForm):
-    submit = SubmitField('Save output to file')
-
-
-class NetworkDeviceForm(FlaskForm):
-    select_device = SelectField('Select device', choices=[])
-    submit = SubmitField('Select device')
-
-
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')
+    dest_file = StringField('Destination Filename', validators=[DataRequired()])
+    submit = SubmitField('Save output')
 

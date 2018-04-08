@@ -10,11 +10,6 @@
                 <li><a href="{{ url_for('list_devices') }}">Devices</a></li>
                 <li><a href="{{ url_for('send_command') }}">Отправить команду</a></li>
                 <li><a href="{{ url_for('run_script') }}">Выполнить скрипт</a></li>
-                {% if current_user.is_anonymous %}
-                <li><a href="{{ url_for('login') }}">Login</a></li>
-                {% else %}
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                {% endif %}
             </ul>
         </div>
     </nav>
