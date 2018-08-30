@@ -57,4 +57,3 @@ def send_show_command(device, show_command):
 
 if __name__ == "__main__":
     output = send_show_command(r1_params, 'sh clock')
-
