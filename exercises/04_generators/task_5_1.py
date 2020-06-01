@@ -21,10 +21,11 @@ import re
 
 def get_ip_from_cfg(filename):
     with open(filename, 'r') as f:
-        regex = re.compile(r'interface.+?ip.+?(\d+\.\d+\.\d+\.\d+)\s(\d+\.\d+\.\d+\.\d+)', re.DOTALL)
-        match = re.findall(regex, f.read())
+        regex = re.compile(r'interface\s\S+.+?(?:(?:ip\saddress.+?(\d+\.\d+\.\d+\.\d+)\s(\d+\.\d+\.\d+\.\d+))|(?:no\sip\saddress)|(?:!))', re.DOTALL)
+        match = re.finditer(regex, f.read())
         for item in match:
-            yield item
+            if item.groups()[1]:
+                yield item.groups()
     
     
 if __name__ == '__main__':
